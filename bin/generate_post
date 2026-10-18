@@ -11,16 +11,18 @@ my $client;
 my $sandbox = PerlTips::Sandbox->new;
 my $generator = PerlTips::Generator->new(
     root => "$FindBin::Bin/..",
+    prepare_runner => sub ($perl_version) {
+        # Check the selected interpreter before spending on the first draft.
+        die "Perl $perl_version example runner did not pass its self-check\n"
+            unless $sandbox->check("use v$perl_version;\nsay 'ready';\n", $perl_version) eq "ready\n";
+    },
     request => sub ($body) {
         if (!$client) {
-            # Check infrastructure before spending on the first draft.
-            die "Example runner did not pass its self-check\n"
-                unless $sandbox->check("use v5.36;\nsay 'ready';\n") eq "ready\n";
             $client = OpenAPI::Client::OpenAI->new;
             $client->ua->request_timeout(120);
         }
         return $client->createChatCompletion({body => $body});
     },
-    run_example => sub ($code) { $sandbox->check($code) },
+    run_example => sub ($code, $perl_version) { $sandbox->check($code, $perl_version) },
 );
 say "Created validated post: ", $generator->generate(shift);

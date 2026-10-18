@@ -7,7 +7,8 @@ sub new ($class, %args) {
     return bless {docker => 'docker', %args}, $class;
 }
 
-sub check ($self, $code) {
+sub check ($self, $code, $perl_version = '5.36') {
+    die "Unsupported example Perl version\n" unless $perl_version =~ /\A5\.(?:36|44)\z/;
     # Compilation can execute BEGIN/use blocks: never check on the host.
     # No host mounts or API credentials are passed into this container.
     my $name = "perl-tips-$$-" . int(rand(1_000_000_000));
@@ -18,7 +19,7 @@ sub check ($self, $code) {
         '--memory=128m', '--memory-swap=128m', '--cpus=0.5',
         '--user=65534:65534', '--workdir=/tmp',
         '--tmpfs=/tmp:rw,noexec,nosuid,size=16m',
-        '--env=LANG=C.UTF-8', '-i', 'perl:5.36', 'perl', '-',
+        '--env=LANG=C.UTF-8', '-i', "perl:$perl_version", 'perl', '-',
     );
     my $input = encode('UTF-8', $code);
     my ($stdout, $stderr) = ('', '');

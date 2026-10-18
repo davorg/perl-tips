@@ -5,7 +5,11 @@
     "aliases": [],
     "introduced": "5.10",
     "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'state'-feature",
-    "notes": "Persistent lexical variables; initialization runs once."
+    "notes": "Persistent lexical variables; initialization runs once.",
+    "stable_since": "5.10",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5100delta"
   },
   {
     "id": "say",
@@ -13,7 +17,11 @@
     "aliases": [],
     "introduced": "5.10",
     "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'say'-feature",
-    "notes": "Prints its arguments with an appended newline."
+    "notes": "Prints its arguments with an appended newline.",
+    "stable_since": "5.10",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5100delta"
   },
   {
     "id": "defined-or",
@@ -23,7 +31,11 @@
     ],
     "introduced": "5.10",
     "reference_url": "https://perldoc.perl.org/5.36.0/perlop#Logical-Defined-Or",
-    "notes": "// selects the fallback only for undef; zero and empty strings are defined."
+    "notes": "// selects the fallback only for undef; zero and empty strings are defined.",
+    "stable_since": "5.10",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5100delta"
   },
   {
     "id": "signatures",
@@ -34,7 +46,11 @@
     ],
     "introduced": "5.20",
     "reference_url": "https://perldoc.perl.org/5.36.0/perlsub#Signatures",
-    "notes": "Positional parameters with arity checks; stable since 5.36, not named parameters."
+    "notes": "Positional parameters with arity checks; stable since 5.36, not named parameters.",
+    "stable_since": "5.36",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5360delta"
   },
   {
     "id": "postderef",
@@ -44,7 +60,11 @@
     ],
     "introduced": "5.20",
     "reference_url": "https://perldoc.perl.org/5.36.0/perlref#Postfix-Dereference-Syntax",
-    "notes": "Postfix ->@* and ->%* dereference collections; stable since 5.24."
+    "notes": "Postfix ->@* and ->%* dereference collections; stable since 5.24.",
+    "stable_since": "5.24",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5240delta"
   },
   {
     "id": "postderef-qq",
@@ -54,7 +74,11 @@
     ],
     "introduced": "5.20",
     "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'postderef'-and-'postderef_qq'-features",
-    "notes": "Enables interpolated postfix dereferences; stable since 5.24. Ordinary ->{key} needs no new pragma."
+    "notes": "Enables interpolated postfix dereferences; stable since 5.24. Ordinary ->{key} needs no new pragma.",
+    "stable_since": "5.24",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5240delta"
   },
   {
     "id": "unicode-strings",
@@ -64,7 +88,575 @@
     ],
     "introduced": "5.12",
     "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'unicode_strings'-feature",
-    "notes": "Uses Unicode string semantics; does not decode input or enable UTF-8 source."
+    "notes": "Uses Unicode string semantics; does not decode input or enable UTF-8 source.",
+    "stable_since": "5.12",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5120delta"
+  },
+  {
+    "id": "try-catch",
+    "title": "try/catch exception handling",
+    "aliases": [],
+    "introduced": "5.34",
+    "stable_since": "5.40",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/perlsyn",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5400delta",
+    "notes": "Catch exceptions with try and catch; the catch variable is a bare lexical variable, not my $e. Do not use finally, which remains experimental."
+  },
+  {
+    "id": "multi-variable-for",
+    "title": "multi-variable foreach loops",
+    "aliases": [],
+    "introduced": "5.36",
+    "stable_since": "5.40",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/perlsyn",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5400delta",
+    "notes": "A for my ($key, $value) (...) loop consumes successive pairs. Use a deterministic even-length list; do not combine with experimental reference aliases."
+  },
+  {
+    "id": "signature-default-operators",
+    "title": "defined-or and logical-or signature defaults",
+    "aliases": [],
+    "introduced": "5.38",
+    "stable_since": "5.38",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/perlsub",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5380delta",
+    "notes": "Signature defaults using $value //= EXPR or $value ||= EXPR also handle supplied undef or false values respectively; ordinary = defaults apply only when an argument is omitted."
+  },
+  {
+    "id": "logical-xor",
+    "title": "high-precedence logical xor",
+    "aliases": [],
+    "introduced": "5.40",
+    "stable_since": "5.40",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/perlop",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5400delta",
+    "notes": "^^ tests whether exactly one operand is true. It is logical, not bitwise ^, and unlike && and || must evaluate both operands."
+  },
+  {
+    "id": "logical-xor-assignment",
+    "title": "logical xor assignment",
+    "aliases": [],
+    "introduced": "5.42",
+    "stable_since": "5.42",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/perlop",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5420delta",
+    "notes": "^^= assigns the logical exclusive-or result back to its left operand. Distinguish truth-value toggling from numeric bitwise ^=."
+  },
+  {
+    "id": "source-encoding",
+    "title": "explicit source encoding",
+    "aliases": [],
+    "introduced": "5.42",
+    "stable_since": "5.42",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/source::encoding",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5420delta",
+    "notes": "source::encoding accepts ascii or utf8, checking source text rather than decoding external input. The utf8 form is equivalent to use utf8. Use the actual module name source::encoding. Put the encoding pragma on its own line before the first line containing non-ASCII source."
+  },
+  {
+    "id": "lexical-method-call",
+    "title": "lexical method invocation",
+    "aliases": [],
+    "introduced": "5.42",
+    "stable_since": "5.42",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/perlop",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5420delta",
+    "notes": "The ->& syntax invokes a lexical subroutine with the invocant as its first argument, bypassing name-based method resolution. Use my sub and an ordinary blessed package; do not use experimental class syntax."
+  },
+  {
+    "id": "builtin-trim",
+    "title": "builtin trim",
+    "aliases": [],
+    "introduced": "5.36",
+    "stable_since": "5.40",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/builtin",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5400delta",
+    "notes": "trim returns a string without leading or trailing whitespace; the original is unchanged. Internal whitespace remains."
+  },
+  {
+    "id": "builtin-indexed",
+    "title": "builtin indexed",
+    "aliases": [],
+    "introduced": "5.36",
+    "stable_since": "5.40",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/builtin",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5400delta",
+    "notes": "indexed returns alternating zero-based indices and copied values in list context. Do not call it in scalar context."
+  },
+  {
+    "id": "builtin-booleans",
+    "title": "builtin true and false",
+    "aliases": [],
+    "introduced": "5.36",
+    "stable_since": "5.40",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/builtin",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5400delta",
+    "notes": "true and false provide boolean values, not strings. Do not use experimental is_bool to demonstrate them."
+  },
+  {
+    "id": "builtin-weak-references",
+    "title": "builtin weak-reference utilities",
+    "aliases": [],
+    "introduced": "5.36",
+    "stable_since": "5.40",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/builtin",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5400delta",
+    "notes": "weaken, unweaken and is_weak control reference strength. A weak reference becomes undef when no strong reference remains."
+  },
+  {
+    "id": "builtin-reference-identity",
+    "title": "builtin refaddr",
+    "aliases": [],
+    "introduced": "5.36",
+    "stable_since": "5.40",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/builtin",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5400delta",
+    "notes": "refaddr identifies a referent. Compare addresses for equality; never print addresses because their values vary between runs."
+  },
+  {
+    "id": "builtin-reference-types",
+    "title": "builtin reftype and blessed",
+    "aliases": [],
+    "introduced": "5.36",
+    "stable_since": "5.40",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/builtin",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5400delta",
+    "notes": "reftype reports the underlying container type; blessed reports an object class or undef. Avoid printing undef without a fallback."
+  },
+  {
+    "id": "builtin-rounding",
+    "title": "builtin ceil and floor",
+    "aliases": [],
+    "introduced": "5.36",
+    "stable_since": "5.40",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/builtin",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5400delta",
+    "notes": "ceil rounds toward positive infinity and floor toward negative infinity. Use finite, exactly representable example inputs."
+  },
+  {
+    "id": "unicode-17",
+    "title": "Unicode 17 character properties",
+    "aliases": [],
+    "introduced": "5.44",
+    "stable_since": "5.44",
+    "perl_version": "5.44",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.44.0/perlunicode",
+    "release_notes_url": "https://perldoc.perl.org/5.44.0/perl5440delta",
+    "notes": "Perl 5.44 supports Unicode 17. Sidetic is a new script in U+10940..U+1095F. Demonstrate chr(0x10940) and \\p{Script=Sidetic}; print boolean results rather than relying on font support."
+  },
+  {
+    "id": "regex-set-operations",
+    "title": "regular expression set operations",
+    "aliases": [],
+    "introduced": "5.18",
+    "stable_since": "5.36",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlrecharclass",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5360delta",
+    "notes": "Extended bracketed classes (?[ ... ]) combine character sets with intersection, subtraction and union. They became stable in 5.36; use literal sets and deterministic examples."
+  },
+  {
+    "id": "variable-length-lookbehind",
+    "title": "noncapturing variable-length lookbehind",
+    "aliases": [],
+    "introduced": "5.30",
+    "stable_since": "5.36",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlre",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5360delta",
+    "notes": "Variable-length lookbehind without capturing parentheses is stable in 5.36. Use bounded lengths and avoid captures inside the lookbehind, which remain experimental."
+  },
+  {
+    "id": "regex-script-runs",
+    "title": "regular expression script runs",
+    "aliases": [],
+    "introduced": "5.28",
+    "stable_since": "5.32",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlre",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5320delta",
+    "notes": "(*script_run:...) constrains a match to a compatible Unicode script run. Demonstrate fixed Latin and Cyrillic text; this is not a complete spoofing defence."
+  },
+  {
+    "id": "chained-comparisons",
+    "title": "chained comparisons",
+    "aliases": [],
+    "introduced": "5.32",
+    "stable_since": "5.32",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlop",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5320delta",
+    "notes": "Compatible comparisons of the same precedence can chain, as in 0 <= $value < 10. Do not mix precedence groups or treat arbitrary operators as chainable."
+  },
+  {
+    "id": "explicit-octal",
+    "title": "explicit octal literals",
+    "aliases": [],
+    "introduced": "5.34",
+    "stable_since": "5.34",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perldata",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5340delta",
+    "notes": "0o prefixes make octal literals explicit; oct also accepts that prefix. Demonstrate conversion with fixed numeric values without changing real file permissions."
+  },
+  {
+    "id": "readable-regex-braces",
+    "title": "whitespace inside braced regex constructs",
+    "aliases": [],
+    "introduced": "5.34",
+    "stable_since": "5.34",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlre",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5340delta",
+    "notes": "Blanks beside braces and around a quantifier comma are permitted, as in a{ 2, 4 }, even without /x. Do not insert spaces inside numeric digits."
+  },
+  {
+    "id": "indented-heredocs",
+    "title": "indented here-documents",
+    "aliases": [],
+    "introduced": "5.26",
+    "stable_since": "5.26",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlop",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5260delta",
+    "notes": "<<~ permits an indented closing delimiter and strips its matching leading whitespace from every content line. Lines must have the required indentation."
+  },
+  {
+    "id": "capture-array",
+    "title": "the capture array",
+    "aliases": [],
+    "introduced": "5.26",
+    "stable_since": "5.26",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlvar",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5260delta",
+    "notes": "@{^CAPTURE} contains captures from the last successful match; index zero corresponds to $1. Copy results before another match changes them."
+  },
+  {
+    "id": "key-value-hash-slices",
+    "title": "key/value hash slices",
+    "aliases": [],
+    "introduced": "5.20",
+    "stable_since": "5.20",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perldata",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5200delta",
+    "notes": "%hash{LIST} returns alternating keys and values. Use a fixed key list to control output order; distinguish it from the value-only @hash{LIST} slice."
+  },
+  {
+    "id": "index-value-array-slices",
+    "title": "index/value array slices",
+    "aliases": [],
+    "introduced": "5.20",
+    "stable_since": "5.20",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perldata",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5200delta",
+    "notes": "%array[LIST] returns alternating indices and values for selected array elements. The percent sigil does not turn the source array into a hash."
+  },
+  {
+    "id": "delete-key-value-slices",
+    "title": "deleting key/value hash slices",
+    "aliases": [],
+    "introduced": "5.28",
+    "stable_since": "5.28",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlfunc",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5280delta",
+    "notes": "delete %hash{LIST} removes selected entries and returns their keys and old values. Use an explicit key order and inspect the remaining hash deterministically."
+  },
+  {
+    "id": "aggregate-state-initialization",
+    "title": "initializing persistent arrays and hashes",
+    "aliases": [],
+    "introduced": "5.28",
+    "stable_since": "5.28",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlsub",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5280delta",
+    "notes": "state @items = (...) and state %counts = (...) support one-time aggregate initialization. This does not permit initializing a list of state variables."
+  },
+  {
+    "id": "unicode-word-boundaries",
+    "title": "Unicode word boundaries",
+    "aliases": [],
+    "introduced": "5.22",
+    "stable_since": "5.22",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlrebackslash",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5220delta",
+    "notes": "\\b{wb} follows Unicode word-boundary rules, including apostrophes within words. It differs from ordinary \\b and is not a complete language-aware tokenizer."
+  },
+  {
+    "id": "unicode-line-break-boundaries",
+    "title": "Unicode line-break opportunities",
+    "aliases": [],
+    "introduced": "5.24",
+    "stable_since": "5.24",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlrebackslash",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5240delta",
+    "notes": "\\b{lb} matches Unicode line-break opportunities, not existing newline characters. Contrast it with matching actual line endings on fixed text."
+  },
+  {
+    "id": "grapheme-cluster-boundaries",
+    "title": "Unicode grapheme boundaries",
+    "aliases": [],
+    "introduced": "5.22",
+    "stable_since": "5.22",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlrebackslash",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5220delta",
+    "notes": "\\b{gcb} identifies boundaries of grapheme clusters. A base character plus combining mark can form one cluster while length counts two characters."
+  },
+  {
+    "id": "regex-keep",
+    "title": "resetting the start of a regex match",
+    "aliases": [],
+    "introduced": "5.10",
+    "stable_since": "5.10",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlre",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5100delta",
+    "notes": "\\K keeps the consumed prefix outside the reported match and replacement. Use it to replace a suffix without capturing and reinserting its prefix."
+  },
+  {
+    "id": "possessive-quantifiers",
+    "title": "possessive regex quantifiers",
+    "aliases": [],
+    "introduced": "5.10",
+    "stable_since": "5.10",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlre",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5100delta",
+    "notes": "Quantifiers such as ++ and *+ never give matched characters back. Contrast success and failure with greedy quantifiers; do not claim they are always faster or equivalent."
+  },
+  {
+    "id": "recursive-patterns",
+    "title": "recursive regular expression subpatterns",
+    "aliases": [],
+    "introduced": "5.10",
+    "stable_since": "5.10",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlre",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5100delta",
+    "notes": "(?1) reuses capture group 1 as a subpattern and supports recursion for small balanced structures. Use bounded fixed inputs and anchor the complete pattern."
+  },
+  {
+    "id": "relative-backreferences",
+    "title": "relative regular expression backreferences",
+    "aliases": [],
+    "introduced": "5.10",
+    "stable_since": "5.10",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlre",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5100delta",
+    "notes": "\\g{-1} refers to the most recently opened capturing group. It can keep embedded patterns independent of earlier capture numbers."
+  },
+  {
+    "id": "generic-linebreaks",
+    "title": "generic linebreak matching",
+    "aliases": [],
+    "introduced": "5.10",
+    "stable_since": "5.10",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlrebackslash",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5100delta",
+    "notes": "\\R matches Unicode linebreaks and treats CRLF as one sequence. Demonstrate splitting fixed mixed line endings rather than reading external files."
+  },
+  {
+    "id": "horizontal-vertical-whitespace",
+    "title": "horizontal and vertical whitespace classes",
+    "aliases": [],
+    "introduced": "5.10",
+    "stable_since": "5.10",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlrebackslash",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5100delta",
+    "notes": "\\h and \\v distinguish horizontal and vertical whitespace; \\H and \\V are complements. Use fixed text to preserve line breaks while normalizing horizontal gaps."
+  },
+  {
+    "id": "regex-default-modifiers",
+    "title": "resetting embedded regex modifiers",
+    "aliases": [],
+    "introduced": "5.14",
+    "stable_since": "5.14",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlre",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5140delta",
+    "notes": "(?^:...) resets the usual imsx flags and character-set mode to defaults for a group. Explicitly state which surrounding flag is being overridden."
+  },
+  {
+    "id": "ascii-regex-classes",
+    "title": "ASCII-restricted regular expressions",
+    "aliases": [],
+    "introduced": "5.14",
+    "stable_since": "5.14",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlre",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5140delta",
+    "notes": "/a restricts \\d, \\s, \\w and POSIX classes to ASCII. /aa additionally prevents ASCII/non-ASCII caseless matches; /a alone does not."
+  },
+  {
+    "id": "lexical-regex-flags",
+    "title": "lexical regular expression defaults",
+    "aliases": [],
+    "introduced": "5.14",
+    "stable_since": "5.14",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/re",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5140delta",
+    "notes": "use re '/x' applies a regex flag within its lexical scope. The flags are chosen when the pattern is compiled, not globally for every future match."
+  },
+  {
+    "id": "pack-byte-order",
+    "title": "explicit byte order in binary templates",
+    "aliases": [],
+    "introduced": "5.10",
+    "stable_since": "5.10",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlpacktut",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5100delta",
+    "notes": "> and < modifiers select big- or little-endian order for supported pack/unpack template types. Use fixed-width templates and show bytes as hex, not raw binary."
+  },
+  {
+    "id": "delete-local",
+    "title": "temporarily deleting hash entries",
+    "aliases": [],
+    "introduced": "5.12",
+    "stable_since": "5.12",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlfunc",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5120delta",
+    "notes": "delete local $hash{key} hides an entry until scope exit, restoring its previous existence and value. Distinguish an absent key from a key holding undef."
+  },
+  {
+    "id": "array-iteration-functions",
+    "title": "keys values and each on arrays",
+    "aliases": [],
+    "introduced": "5.12",
+    "stable_since": "5.12",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlfunc",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5120delta",
+    "notes": "keys, values and each accept arrays. each @array yields an index and value in list context and maintains an iterator; do not mutate the array during iteration."
+  },
+  {
+    "id": "package-versions",
+    "title": "versions in package declarations",
+    "aliases": [],
+    "introduced": "5.12",
+    "stable_since": "5.12",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlfunc",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5120delta",
+    "notes": "package Name VERSION sets the package version at compile time from a literal. It does not load a module or set the required Perl interpreter version."
+  },
+  {
+    "id": "package-blocks",
+    "title": "scoped package declarations",
+    "aliases": [],
+    "introduced": "5.14",
+    "stable_since": "5.14",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlfunc",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5140delta",
+    "notes": "package Name { ... } limits the package declaration to a block. Symbols remain package symbols rather than becoming lexically private."
+  },
+  {
+    "id": "automatic-character-names",
+    "title": "automatic named character loading",
+    "aliases": [],
+    "introduced": "5.16",
+    "stable_since": "5.16",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/charnames",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5160delta",
+    "notes": "\\N{FULL CHARACTER NAME} automatically loads the standard character-name support without use charnames. This does not enable UTF-8 source or output encoding."
+  },
+  {
+    "id": "c3-method-resolution",
+    "title": "C3 method resolution order",
+    "aliases": [],
+    "introduced": "5.10",
+    "stable_since": "5.10",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/mro",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5100delta",
+    "notes": "use mro 'c3' selects C3 linearization for a package. Use a deterministic diamond hierarchy and inspect mro::get_linear_isa; the default remains depth-first search."
+  },
+  {
+    "id": "unitcheck-blocks",
+    "title": "UNITCHECK compilation hooks",
+    "aliases": [],
+    "introduced": "5.10",
+    "stable_since": "5.10",
+    "perl_version": "5.36",
+    "status": "stable",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlmod",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5100delta",
+    "notes": "UNITCHECK runs just after its compilation unit finishes compiling, unlike CHECK at the main compilation/execution transition. Use a self-contained program with fixed messages and no external loading."
   },
   {
     "id": "fc",
@@ -72,7 +664,11 @@
     "aliases": [],
     "introduced": "5.16",
     "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'fc'-feature",
-    "notes": "Unicode case folding for caseless comparisons, not merely lowercasing."
+    "notes": "Unicode case folding for caseless comparisons, not merely lowercasing.",
+    "stable_since": "5.16",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5160delta"
   },
   {
     "id": "unicode-eval",
@@ -82,7 +678,11 @@
     ],
     "introduced": "5.16",
     "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'unicode_eval'-and-'evalbytes'-features",
-    "notes": "String eval interprets characters consistently; does not enable UTF-8 source or make eval safe."
+    "notes": "String eval interprets characters consistently; does not enable UTF-8 source or make eval safe.",
+    "stable_since": "5.16",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5160delta"
   },
   {
     "id": "evalbytes",
@@ -90,7 +690,11 @@
     "aliases": [],
     "introduced": "5.16",
     "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'unicode_eval'-and-'evalbytes'-features",
-    "notes": "Evaluates a byte string as Perl; never evaluate untrusted input."
+    "notes": "Evaluates a byte string as Perl; never evaluate untrusted input.",
+    "stable_since": "5.16",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5160delta"
   },
   {
     "id": "current-sub",
@@ -100,7 +704,11 @@
     ],
     "introduced": "5.16",
     "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'current_sub'-feature",
-    "notes": "__SUB__ refers to the current subroutine, allowing anonymous recursion."
+    "notes": "__SUB__ refers to the current subroutine, allowing anonymous recursion.",
+    "stable_since": "5.16",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5160delta"
   },
   {
     "id": "lexical-subs",
@@ -110,7 +718,11 @@
     ],
     "introduced": "5.18",
     "reference_url": "https://perldoc.perl.org/5.36.0/perlsub#Lexical-Subroutines",
-    "notes": "Lexically scoped subroutine names; stable and always available since 5.26."
+    "notes": "Lexically scoped subroutine names; stable and always available since 5.26.",
+    "stable_since": "5.26",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5260delta"
   },
   {
     "id": "bitwise",
@@ -118,7 +730,11 @@
     "aliases": [],
     "introduced": "5.22",
     "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'bitwise'-feature",
-    "notes": "Numeric bitwise operators and dotted string variants; stable since 5.28."
+    "notes": "Numeric bitwise operators and dotted string variants; stable since 5.28.",
+    "stable_since": "5.28",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5280delta"
   },
   {
     "id": "isa",
@@ -126,7 +742,11 @@
     "aliases": [],
     "introduced": "5.32",
     "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'isa'-feature",
-    "notes": "Infix object class test; stable since 5.36."
+    "notes": "Infix object class test; stable since 5.36.",
+    "stable_since": "5.36",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5360delta"
   },
   {
     "id": "nondestructive-substitution",
@@ -136,7 +756,11 @@
     ],
     "introduced": "5.14",
     "reference_url": "https://perldoc.perl.org/5.36.0/perlop#s/PATTERN/REPLACEMENT/msixpodualngcer",
-    "notes": "The /r substitution modifier returns the modified string and preserves the original; it does not return a replacement count."
+    "notes": "The /r substitution modifier returns the modified string and preserves the original; it does not return a replacement count.",
+    "stable_since": "5.14",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5140delta"
   },
   {
     "id": "named-captures",
@@ -144,7 +768,11 @@
     "aliases": [],
     "introduced": "5.10",
     "reference_url": "https://perldoc.perl.org/5.36.0/perlre#Capture-groups",
-    "notes": "(?<name>...) names a capture; $+{name} accesses it after a successful match."
+    "notes": "(?<name>...) names a capture; $+{name} accesses it after a successful match.",
+    "stable_since": "5.10",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5100delta"
   },
   {
     "id": "noncapturing-mode",
@@ -152,7 +780,11 @@
     "aliases": [],
     "introduced": "5.22",
     "reference_url": "https://perldoc.perl.org/5.36.0/perlre#n",
-    "notes": "The /n modifier makes ordinary parentheses noncapturing; explicitly named groups still capture."
+    "notes": "The /n modifier makes ordinary parentheses noncapturing; explicitly named groups still capture.",
+    "stable_since": "5.22",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5220delta"
   },
   {
     "id": "extended-regex",
@@ -160,6 +792,10 @@
     "aliases": [],
     "introduced": "5.26",
     "reference_url": "https://perldoc.perl.org/5.36.0/perlre#/x-and-/xx",
-    "notes": "/xx extends /x by ignoring unescaped spaces and tabs inside bracketed character classes. Escape literal spaces."
+    "notes": "/xx extends /x by ignoring unescaped spaces and tabs inside bracketed character classes. Escape literal spaces.",
+    "stable_since": "5.26",
+    "perl_version": "5.36",
+    "status": "stable",
+    "release_notes_url": "https://perldoc.perl.org/5.36.0/perl5260delta"
   }
 ]

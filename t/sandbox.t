@@ -1,4 +1,5 @@
 use v5.36;
+use utf8;
 use Test::More;
 use FindBin;
 use lib "$FindBin::Bin/../lib";
@@ -37,6 +38,12 @@ like($commands, qr/--network=none/, 'network disabled');
 like($commands, qr/--read-only/, 'read-only root');
 like($commands, qr/--user=65534:65534/, 'unprivileged user');
 like($commands, qr/perl:5\.36/, 'fixed baseline interpreter');
+is($sandbox->check('valid newer example', '5.44'), "ok\n", 'newer interpreter supported');
+like($root->child('commands')->slurp_utf8, qr/perl:5\.44/, 'selected newer image used');
+my $before_invalid = $root->child('commands')->slurp_utf8;
+fails(sub { $sandbox->check('valid example', 'latest') }, qr/Unsupported example Perl version/,
+    'unreviewed image tags rejected');
+is($root->child('commands')->slurp_utf8, $before_invalid, 'invalid version never invokes Docker');
 unlike($commands, qr/OPENAI_API_KEY|--volume|--mount/, 'no secrets or host mounts');
 fails(sub { $sandbox->check('bad syntax') }, qr/Example failed.*syntax error/s, 'compile failure rejected');
 fails(sub { $sandbox->check('warning') }, qr/emitted warnings/, 'warnings rejected');
@@ -61,6 +68,30 @@ SKIP: {
         "absent\n", 'API key absent');
     is($real->check("use v5.36;\nsay -e '/home/dave/git/perl-tips' ? 'mounted' : 'absent';\n"),
         "absent\n", 'repository absent');
+}
+
+SKIP: {
+    skip 'Set PERL_TIPS_CONTAINER_TEST=1 to test real Docker/Perl 5.44 examples', 9
+        unless $ENV{PERL_TIPS_CONTAINER_TEST};
+    my $real = PerlTips::Sandbox->new;
+    like($real->check("use v5.44;\nsay \$^V;\n", '5.44'),
+        qr/\Av5\.44\.\d+\n\z/, 'actual Perl 5.44 container');
+    is($real->check("use v5.44;\ntry { die qq{broken\\n} } catch (\$e) { print \$e }\n", '5.44'),
+        "broken\n", 'stable try/catch without warning suppression');
+    is($real->check("use v5.44;\nfor my (\$key, \$value) (a => 1, b => 2) { say qq{\$key=\$value} }\n", '5.44'),
+        "a=1\nb=2\n", 'stable multi-variable loops');
+    is($real->check("use v5.44;\nsay trim('  done  ');\n", '5.44'), "done\n",
+        'stable builtin imported by version bundle');
+    is($real->check("use v5.44;\nsub fallback (\$x //= 7) { say \$x }\nfallback(undef); fallback(0);\n", '5.44'),
+        "7\n0\n", 'signature defaults handle supplied undef');
+    is($real->check("use v5.44;\nmy \$char = chr(0x10940); say \$char =~ /\\p{Script=Sidetic}/ ? 'yes' : 'no';\n", '5.44'),
+        "yes\n", 'Unicode 17 script recognised');
+    is($real->check("use v5.44;\nmy \$flag = 1; \$flag ^^= 1; say \$flag ? 'true' : 'false';\n", '5.44'),
+        "false\n", 'logical xor assignment');
+    is($real->check("use v5.44;\nmy sub label (\$self) { return ref \$self }\nmy \$object = bless {}, 'Widget'; say \$object->&label;\n", '5.44'),
+        "Widget\n", 'lexical method call without experimental class syntax');
+    is($real->check("use v5.44;\nuse source::encoding 'utf8';\nsay length 'café';\n", '5.44'),
+        "4\n", 'explicit UTF-8 source encoding');
 }
 
 done_testing;

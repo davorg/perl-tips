@@ -38,6 +38,7 @@ jobs:
       - name: Prepare isolated Perl example runner
         run: |
           docker pull perl:5.36
+          docker pull perl:5.44
           PERL_TIPS_CONTAINER_TEST=1 prove -Ilib t/sandbox.t
 
       - name: Generate today's post

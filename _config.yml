@@ -76,7 +76,7 @@ footer:
       url: "https://metacpan.org/dist/perl/view/pod/perldelta.pod"
 
 # Build settings
-exclude: ["bin", "data", "lib", "t", "cpanfile", "README.md"]
+exclude: ["bin", "data", "docs", "lib", "t", "cpanfile", "README.md"]
 
 collections:
   pages:
