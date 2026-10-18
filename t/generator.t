@@ -347,6 +347,8 @@ subtest 'newer topics select matching prompts, interpreter and release notes' =>
         'no unresolved prompt placeholders');
     my $text = $post->slurp_utf8;
     like($text, qr/^perl_version: "5\.44"$/m, 'tested version recorded');
+    like($text, qr/^feature_name: "try\/catch exception handling"$/m,
+        'reviewed display name is separate from the try-catch tracking id');
     like($text, qr/Example tested with Perl 5\.44\./, 'tested version shown to reader');
     like($text, qr{https://perldoc\.perl\.org/5\.44\.0/perl5400delta}, 'stabilisation perldelta linked');
     is_deeply(decode_json($root->child('data/covered-features.json')->slurp_raw),

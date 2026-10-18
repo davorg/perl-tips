@@ -1,6 +1,7 @@
 ---
 title: "Print array contents directly from references in strings"
 feature: "postderef-qq"
+feature_name: "postfix dereferencing in strings"
 perl_version: "5.36"
 description: "Learn about postfix dereferencing in strings in Perl. Enables interpolated postfix dereferences; stable since 5.24. Ordinary ->{key} needs no new pragma."
 date: 2026-10-17

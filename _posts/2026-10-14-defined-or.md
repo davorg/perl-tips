@@ -1,6 +1,7 @@
 ---
 title: "Apply defaults without replacing zero or empty strings"
 feature: "defined-or"
+feature_name: "defined-or"
 perl_version: "5.36"
 description: "Learn about defined-or in Perl. // selects the fallback only for undef; zero and empty strings are defined."
 date: 2026-10-14

@@ -1,6 +1,7 @@
 ---
 title: "Read nested queue data with postfix dereferencing"
 feature: "postderef"
+feature_name: "postfix dereferencing"
 perl_version: "5.36"
 description: "Learn about postfix dereferencing in Perl. Postfix ->@* and ->%* dereference collections; stable since 5.24."
 date: 2026-10-16

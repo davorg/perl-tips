@@ -12,6 +12,10 @@ release, and keep Perl reasonably up to date. This appears on the homepage,
 in site metadata, and in a reminder in the footer on every page.
 
 The homepage shows the five newest tips, with the complete archive on All tips.
+Both lists show a small publication date with a calendar icon beneath each title,
+using day-month-year format. Individual tips show
+the reviewed feature name in small caps directly below the title. The name comes
+from `feature_name` metadata, with the internal `feature` ID retained for tracking.
 Code blocks have a compact, keyboard-accessible copy button in the top-right corner.
 It copies the code as plain text, preserves whitespace, and confirms success.
 If clipboard access is denied or unavailable, the code is selected for manual

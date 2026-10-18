@@ -24,6 +24,7 @@ description: "Useful Perl features, one small tip at a time. Discover what you'v
 url: "https://tips.perlhacks.com"
 baseurl: ""
 locale: "en-GB"
+date_format: "%d %B %Y"
 
 email: hello@davecross.co.uk
 github_username:  davorg
@@ -84,6 +85,11 @@ collections:
     permalink: /:path/
 
 defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      show_date: true
   - scope:
       path: ""
     values:

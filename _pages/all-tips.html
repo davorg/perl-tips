@@ -13,10 +13,10 @@ author_profile: false
 {% for year in tips_by_year %}
   <h2>{{ year.name }}</h2>
   <ul>
-    {% for tip in year.items %}
-      <li>
-        <a href="{{ tip.url | relative_url }}">{{ tip.title | escape }}</a>
-        &mdash; <time datetime="{{ tip.date | date_to_xmlschema }}">{{ tip.date | date: '%d %B %Y' }}</time>
+    {% for post in year.items %}
+      <li class="list__item">
+        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        {% include page__meta.html type="list" %}
       </li>
     {% endfor %}
   </ul>

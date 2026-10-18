@@ -1,0 +1,13 @@
+.page__feature {
+  margin: 0.25rem 0 0.6rem;
+  color: #173f43;
+  font-size: 0.9em;
+  font-weight: 600;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+}
+
+.page__feature + .page__meta {
+  margin-top: 0;
+}

@@ -175,6 +175,7 @@ sub _render ($topic, $date, $draft) {
     $description = substr($description, 0, 157) . '...' if length($description) > 160;
     return join "\n", '---', 'title: ' . $json->encode($draft->{title}),
         'feature: ' . $json->encode($topic->{id}),
+        'feature_name: ' . $json->encode($topic->{title}),
         'perl_version: ' . $json->encode($topic->{perl_version}),
         'description: ' . $json->encode($description),
         "date: $date", 'tags: [' . $json->encode($topic->{id}) . ']',

@@ -1,6 +1,7 @@
 ---
 title: "Apply Unicode rules without confusing bytes and characters"
 feature: "unicode-strings"
+feature_name: "unicode_strings"
 perl_version: "5.36"
 description: "Learn about unicode_strings in Perl. Uses Unicode string semantics; does not decode input or enable UTF-8 source."
 date: 2026-10-18

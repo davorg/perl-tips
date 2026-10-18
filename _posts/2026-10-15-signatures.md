@@ -1,6 +1,7 @@
 ---
 title: "Declare positional arguments and reject incorrect argument counts"
 feature: "signatures"
+feature_name: "subroutine signatures"
 perl_version: "5.36"
 description: "Learn about subroutine signatures in Perl. Positional parameters with arity checks; stable since 5.36, not named parameters."
 date: 2026-10-15
