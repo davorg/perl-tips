@@ -1,7 +1,9 @@
 # Modern Perl Tips
 
 A static Jekyll blog with a Perl script that generates and checks short articles
-about modern Perl. The intended site is `https://tips.perlhacks.com/`.
+about modern Perl. The repository is
+[`davorg/perl-tips`](https://github.com/davorg/perl-tips); the intended site is
+`https://tips.perlhacks.com/`.
 
 The message is **useful Perl features, one small tip at a time**: help existing
 Perl programmers discover additions they may have missed, encourage reading
@@ -10,7 +12,7 @@ release, and keep Perl reasonably up to date. This appears on the homepage,
 in site metadata, and in a reminder in the footer on every page.
 
 The homepage shows the five newest tips, with the complete archive on All tips.
-Code blocks have a keyboard-accessible copy button in the top-right corner.
+Code blocks have a compact, keyboard-accessible copy button in the top-right corner.
 It copies the code as plain text, preserves whitespace, and confirms success.
 If clipboard access is denied or unavailable, the code is selected for manual
 copying and a message explains what to do.
@@ -25,6 +27,14 @@ that describes the practical benefit of the example. That headline is used in
 the article, listings, feed, search metadata, and social cards. The feature ID
 stays in `feature`, tags, filenames, and the covered-feature list. Descriptions
 are based on the reviewed topic notes. Changing a headline does not change its URL.
+
+All 24 existing posts have been given descriptive headlines, with their feature
+IDs retained in metadata. Their bodies, dates, tags, filenames, and URLs were
+preserved. This title backfill does not fix the historical articles' technical
+errors; those articles are still planned for replacement before launch.
+
+Google Analytics uses GA4 measurement ID `G-M8YLPJPFFR`, configured under
+`analytics.google.tracking_id` in `_config.yml`.
 
 The teal `say` mark is an editable SVG used in the masthead and as the favicon.
 The social preview has an SVG source and a PNG export in `img/`. Regenerate it
@@ -47,8 +57,8 @@ today's UTC date. Generation follows these steps:
    invent the topic or the documentation URL. Aliases such as `signatures`,
    `sub signatures`, and `subroutine signatures` count as one topic.
 3. Request a structured JSON draft with a helpful title, a problem, one
-   standalone Perl program, its exact expected stdout, and an explanation. The prompt targets
-   stable Perl 5.36, requires all setup and inputs, and rules out placeholders,
+   standalone Perl program, its exact expected stdout, and an explanation.
+   The prompt targets stable Perl 5.36, requires all setup and inputs, and rules out placeholders,
    external dependencies, warning suppression, and nondeterministic output.
 4. Check the HTTP response, completion status, refusal, JSON schema, and draft
    format. Run the program in an isolated `perl:5.36` Docker container. Compilation
@@ -155,12 +165,13 @@ from the site build.
 | [`t/`](t/) | Offline regression tests and opt-in container tests. |
 | [`cpanfile`](cpanfile) | Perl dependencies, including JSON::Validator and IPC::Run. |
 | [`_posts/`](_posts/) | Article source with YAML front matter and fenced examples. |
-| [`_pages/index.md`](_pages/index.md) | Homepage using the theme's `home` layout. |
+| [`_pages/index.md`](_pages/index.md) | Homepage copy using the local `home` layout. |
 | [`_pages/all-tips.html`](_pages/all-tips.html) | Complete tip index, grouped by year with newest tips first. |
 | [`_layouts/home.html`](_layouts/home.html) | Homepage layout with the five most recent tips. |
+| [`_includes/seo.html`](_includes/seo.html) | Canonical URLs, descriptions, social cards, and JSON-LD. |
 | [`assets/js/code-copy.js`](assets/js/code-copy.js), [`assets/css/code-copy.css`](assets/css/code-copy.css) | Copy buttons and feedback for code blocks. |
 | [`_config.yml`](_config.yml) | Site identity, remote theme, plugins, analytics, URLs, and exclusions. |
-| [`_data/`](_data/) | Navigation and footer-link data; the active footer is also configured in `_config.yml`. |
+| [`_data/`](_data/) | Navigation and legacy footer-link data; active footer links are configured in `_config.yml`. |
 | [`Gemfile`](Gemfile), [`Gemfile.lock`](Gemfile.lock) | Ruby dependencies; currently locks Jekyll 4.4.1 and Bundler 2.5.22 for x86_64 Linux. |
 | [`Gemfile.old`](Gemfile.old) | Previous Jekyll 3.9 manifest; not active. |
 | [`.github/workflows/daily-css.yml`](.github/workflows/daily-css.yml) | Daily generation, checks, and commit/push automation. |
@@ -185,13 +196,14 @@ The original articles contain technical errors and repeated subjects; they are
 planned for deletion before launch. The generator tests use independent fixtures
 and do not require those historical posts to pass.
 
-During local verification, generator syntax and offline tests passed with Perl
-5.42.3; Ruby dependencies were installed. Real Docker tests could not run because
-this workspace denies access to the Docker socket. They are mandatory in the
-daily workflow. The branding changes built successfully using the installed
-Minimal Mistakes 4.28.0 theme with a temporary configuration; rendered metadata,
-links, images, the feed, and the footer reminder were checked. Downloading the
-remote theme was previously blocked by DNS resolution in this workspace. Live
-API compatibility and live-site behavior have not been verified. The exposed
-`.git/` is empty, so branch, history, tracked-file status, and hosting settings
-were unavailable.
+Local verification on 2026-10-18 passed generator syntax and offline regression
+checks with Perl 5.42.3, JavaScript copy-interaction checks, and workflow lint.
+The site built using the installed Minimal Mistakes 4.28.0 theme with a temporary
+configuration. Checks covered all 26 rendered pages' SEO and social metadata,
+the five-tip homepage limit, the complete archive, updated article and feed
+titles, stable URLs, image dimensions, the single footer feed link, and GA4.
+
+Real Docker tests and visual browser checks were blocked by the workspace
+sandbox; real container checks are mandatory in the daily workflow. Downloading
+the remote theme was also blocked in this workspace. Live API compatibility,
+hosting configuration, and live-site behavior have not been verified.
