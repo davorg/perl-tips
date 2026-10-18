@@ -1,0 +1,8 @@
+main:
+  - title: "Home"
+    url: "/"
+  - title: "All tips"
+    url: "/all-tips/"
+  - title: "Read perldelta"
+    url: "https://metacpan.org/dist/perl/view/pod/perldelta.pod"
+

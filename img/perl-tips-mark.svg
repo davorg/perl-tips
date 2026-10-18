@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Modern Perl Tips</title>
+  <desc id="desc">The Perl keyword say and a gold cursor on a deep teal tile.</desc>
+  <rect width="256" height="256" rx="48" fill="#173f43"/>
+  <path d="m38 57 18 15-18 15" fill="none" stroke="#a8ddc6" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="32" y="158" font-family="DejaVu Sans Mono, monospace" font-size="91" font-weight="bold" letter-spacing="-5" fill="#fff9ed">say</text>
+  <path d="M167 190h49" stroke="#edbe68" stroke-width="12"/>
+</svg>

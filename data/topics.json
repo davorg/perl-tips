@@ -1,0 +1,165 @@
+[
+  {
+    "id": "state",
+    "title": "state",
+    "aliases": [],
+    "introduced": "5.10",
+    "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'state'-feature",
+    "notes": "Persistent lexical variables; initialization runs once."
+  },
+  {
+    "id": "say",
+    "title": "say",
+    "aliases": [],
+    "introduced": "5.10",
+    "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'say'-feature",
+    "notes": "Prints its arguments with an appended newline."
+  },
+  {
+    "id": "defined-or",
+    "title": "defined-or",
+    "aliases": [
+      "defined or"
+    ],
+    "introduced": "5.10",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlop#Logical-Defined-Or",
+    "notes": "// selects the fallback only for undef; zero and empty strings are defined."
+  },
+  {
+    "id": "signatures",
+    "title": "subroutine signatures",
+    "aliases": [
+      "sub signatures",
+      "signatures"
+    ],
+    "introduced": "5.20",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlsub#Signatures",
+    "notes": "Positional parameters with arity checks; stable since 5.36, not named parameters."
+  },
+  {
+    "id": "postderef",
+    "title": "postfix dereferencing",
+    "aliases": [
+      "postderef"
+    ],
+    "introduced": "5.20",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlref#Postfix-Dereference-Syntax",
+    "notes": "Postfix ->@* and ->%* dereference collections; stable since 5.24."
+  },
+  {
+    "id": "postderef-qq",
+    "title": "postfix dereferencing in strings",
+    "aliases": [
+      "postderef_qq"
+    ],
+    "introduced": "5.20",
+    "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'postderef'-and-'postderef_qq'-features",
+    "notes": "Enables interpolated postfix dereferences; stable since 5.24. Ordinary ->{key} needs no new pragma."
+  },
+  {
+    "id": "unicode-strings",
+    "title": "unicode_strings",
+    "aliases": [
+      "unicode_strings"
+    ],
+    "introduced": "5.12",
+    "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'unicode_strings'-feature",
+    "notes": "Uses Unicode string semantics; does not decode input or enable UTF-8 source."
+  },
+  {
+    "id": "fc",
+    "title": "fc",
+    "aliases": [],
+    "introduced": "5.16",
+    "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'fc'-feature",
+    "notes": "Unicode case folding for caseless comparisons, not merely lowercasing."
+  },
+  {
+    "id": "unicode-eval",
+    "title": "unicode_eval",
+    "aliases": [
+      "unicode_eval"
+    ],
+    "introduced": "5.16",
+    "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'unicode_eval'-and-'evalbytes'-features",
+    "notes": "String eval interprets characters consistently; does not enable UTF-8 source or make eval safe."
+  },
+  {
+    "id": "evalbytes",
+    "title": "evalbytes",
+    "aliases": [],
+    "introduced": "5.16",
+    "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'unicode_eval'-and-'evalbytes'-features",
+    "notes": "Evaluates a byte string as Perl; never evaluate untrusted input."
+  },
+  {
+    "id": "current-sub",
+    "title": "__SUB__",
+    "aliases": [
+      "current_sub"
+    ],
+    "introduced": "5.16",
+    "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'current_sub'-feature",
+    "notes": "__SUB__ refers to the current subroutine, allowing anonymous recursion."
+  },
+  {
+    "id": "lexical-subs",
+    "title": "lexical subroutines",
+    "aliases": [
+      "lexical_subs"
+    ],
+    "introduced": "5.18",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlsub#Lexical-Subroutines",
+    "notes": "Lexically scoped subroutine names; stable and always available since 5.26."
+  },
+  {
+    "id": "bitwise",
+    "title": "bitwise",
+    "aliases": [],
+    "introduced": "5.22",
+    "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'bitwise'-feature",
+    "notes": "Numeric bitwise operators and dotted string variants; stable since 5.28."
+  },
+  {
+    "id": "isa",
+    "title": "isa",
+    "aliases": [],
+    "introduced": "5.32",
+    "reference_url": "https://perldoc.perl.org/5.36.0/feature#The-'isa'-feature",
+    "notes": "Infix object class test; stable since 5.36."
+  },
+  {
+    "id": "nondestructive-substitution",
+    "title": "nondestructive substitution",
+    "aliases": [
+      "s///r"
+    ],
+    "introduced": "5.14",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlop#s/PATTERN/REPLACEMENT/msixpodualngcer",
+    "notes": "The /r substitution modifier returns the modified string and preserves the original; it does not return a replacement count."
+  },
+  {
+    "id": "named-captures",
+    "title": "named regular expression captures",
+    "aliases": [],
+    "introduced": "5.10",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlre#Capture-groups",
+    "notes": "(?<name>...) names a capture; $+{name} accesses it after a successful match."
+  },
+  {
+    "id": "noncapturing-mode",
+    "title": "regular expression noncapturing mode",
+    "aliases": [],
+    "introduced": "5.22",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlre#n",
+    "notes": "The /n modifier makes ordinary parentheses noncapturing; explicitly named groups still capture."
+  },
+  {
+    "id": "extended-regex",
+    "title": "extended regular expressions with /xx",
+    "aliases": [],
+    "introduced": "5.26",
+    "reference_url": "https://perldoc.perl.org/5.36.0/perlre#/x-and-/xx",
+    "notes": "/xx extends /x by ignoring unescaped spaces and tabs inside bracketed character classes. Escape literal spaces."
+  }
+]

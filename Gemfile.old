@@ -1,0 +1,19 @@
+source "https://rubygems.org"
+
+require "jekyll-remote-theme"
+
+gem "jekyll", "~> 3.9"
+
+group :jekyll_plugins do
+  gem "jekyll-remote-theme"
+  gem "jekyll-feed"
+  gem "jekyll-sitemap"
+  gem "jekyll-seo-tag"
+  gem "jekyll-include-cache"
+end
+
+gem "kramdown-parser-gfm"
+gem "webrick", "~> 1.7"
+gem "bigdecimal"
+gem "base64"
+

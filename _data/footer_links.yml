@@ -1,0 +1,9 @@
+links:
+  - label: "GitHub"
+    icon: "fab fa-github"
+    url: "https://github.com/davorg/perl-tips"
+
+  - label: "Read perldelta"
+    icon: "fas fa-book-open"
+    url: "https://metacpan.org/dist/perl/view/pod/perldelta.pod"
+

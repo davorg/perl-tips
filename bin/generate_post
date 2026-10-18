@@ -1,0 +1,26 @@
+#!/usr/bin/env perl
+use v5.36;
+use FindBin;
+use lib "$FindBin::Bin/../lib";
+use OpenAPI::Client::OpenAI;
+use PerlTips::Generator;
+use PerlTips::Sandbox;
+
+die "Usage: $0 [YYYY-MM-DD]\n" if @ARGV > 1;
+my $client;
+my $sandbox = PerlTips::Sandbox->new;
+my $generator = PerlTips::Generator->new(
+    root => "$FindBin::Bin/..",
+    request => sub ($body) {
+        if (!$client) {
+            # Check infrastructure before spending on the first draft.
+            die "Example runner did not pass its self-check\n"
+                unless $sandbox->check("use v5.36;\nsay 'ready';\n") eq "ready\n";
+            $client = OpenAPI::Client::OpenAI->new;
+            $client->ua->request_timeout(120);
+        }
+        return $client->createChatCompletion({body => $body});
+    },
+    run_example => sub ($code) { $sandbox->check($code) },
+);
+say "Created validated post: ", $generator->generate(shift);

@@ -1,0 +1,95 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+title: "Modern Perl Tips"
+subtitle: "Useful features, one tip at a time"
+description: "Useful Perl features, one small tip at a time. Discover what you've missed, read perldelta, and keep your Perl reasonably up to date."
+url: "https://tips.perlhacks.com"
+baseurl: ""
+locale: "en-GB"
+
+email: hello@davecross.co.uk
+github_username:  davorg
+
+remote_theme: mmistakes/minimal-mistakes
+plugins:
+  - jekyll-include-cache
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Minimal Mistakes Settings
+minimal_mistakes_skin: "default"
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-M8YLPJPFFR"
+
+logo: /img/perl-tips-mark.svg
+og_image: /img/perl-tips-social.png
+
+seo_description_max_length: 160
+
+permalink: /:year/:month/:day/:title/
+
+# Site author
+author:
+  name: "Dave Cross"
+  url: "https://davecross.co.uk/"
+
+footer:
+  links:
+    - label: "Made by Dave Cross"
+      icon: "fa-solid fa-user"
+      url: "https://links.davecross.co.uk/"
+    - label: "GitHub"
+      icon: "fab fa-github"
+      url: "https://github.com/davorg/perl-tips"
+    - label: "Read perldelta"
+      icon: "fas fa-book-open"
+      url: "https://metacpan.org/dist/perl/view/pod/perldelta.pod"
+
+# Build settings
+exclude: ["bin", "data", "lib", "t", "cpanfile", "README.md"]
+
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image:
+        path: /img/perl-tips-social.png
+        width: 1200
+        height: 630
+        type: image/png
+        alt: "Modern Perl Tips beside a teal say mark. Read perldelta. Keep your Perl moving."

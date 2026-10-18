@@ -1,0 +1,71 @@
+.code-block {
+  position: relative;
+}
+
+.code-block > pre,
+.highlighter-rouge .code-block > pre {
+  padding-top: 2.25rem;
+}
+
+.code-copy-button {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 1px solid #426569;
+  border-radius: 0.2rem;
+  background: #fff9ed;
+  color: #173f43;
+  cursor: pointer;
+}
+
+.code-copy-button:hover {
+  background: #d9eee4;
+}
+
+.code-copy-button:focus-visible {
+  outline: 3px solid #173f43;
+  outline-offset: 2px;
+}
+
+.code-copy-button svg {
+  width: 0.66rem;
+  height: 0.66rem;
+}
+
+.code-copy-button[data-copied] {
+  background: #a8ddc6;
+}
+
+.code-copy-status {
+  position: absolute;
+  top: 0.55rem;
+  right: 2.2rem;
+  max-width: calc(100% - 3rem);
+  color: inherit;
+  font: 0.75rem/1.4 sans-serif;
+}
+
+.code-copy-status[data-error] {
+  position: static;
+  display: block;
+  max-width: none;
+  padding: 0.5rem 1rem;
+}
+
+@media print {
+  .code-copy-button,
+  .code-copy-status {
+    display: none;
+  }
+
+  .code-block > pre,
+  .highlighter-rouge .code-block > pre {
+    padding-top: 1em;
+  }
+}

@@ -1,0 +1,84 @@
+{%- assign seo_title = page.seo_title | default: page.title | default: site.title | strip_html | normalize_whitespace -%}
+{%- assign document_title = seo_title -%}
+{%- unless seo_title contains site.title -%}
+  {%- assign document_title = seo_title | append: ' | ' | append: site.title -%}
+{%- endunless -%}
+{%- assign canonical_url = page.canonical_url | default: page.url | replace: '/index.html', '/' | absolute_url -%}
+{%- assign description_limit = site.seo_description_max_length | default: 160 -%}
+{%- if page.description -%}
+  {%- assign seo_description = page.description | normalize_whitespace | strip | truncate: description_limit -%}
+{%- else -%}
+  {%- assign seo_description = page.excerpt | default: site.description | markdownify | strip_html | normalize_whitespace | strip | truncate: description_limit -%}
+{%- endif -%}
+{%- assign image_url = page.image.path | default: page.image | default: site.og_image | absolute_url -%}
+{%- assign author = page.author | default: site.author -%}
+{%- assign author = site.data.authors[author] | default: author -%}
+{%- assign author_name = author.name | default: author -%}
+{%- assign author_url = author.url | default: site.author.url -%}
+{%- assign site_url = '/' | absolute_url -%}
+{%- assign site_id = site_url | append: '#website' -%}
+{%- assign schema_type = 'WebPage' -%}
+{%- assign og_type = 'website' -%}
+{%- if page.collection == 'posts' -%}
+  {%- assign schema_type = 'BlogPosting' -%}
+  {%- assign og_type = 'article' -%}
+{%- elsif page.url == '/' -%}
+  {%- assign schema_type = 'WebSite' -%}
+{%- elsif page.url == '/all-tips/' -%}
+  {%- assign schema_type = 'CollectionPage' -%}
+{%- endif -%}
+
+<title>{{ document_title | escape }}</title>
+<meta name="description" content="{{ seo_description | escape }}">
+<meta name="author" content="{{ author_name | escape }}">
+<link rel="canonical" href="{{ canonical_url | escape }}">
+
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:locale" content="{{ site.locale | replace: '-', '_' | escape }}">
+<meta property="og:site_name" content="{{ site.title | escape }}">
+<meta property="og:title" content="{{ seo_title | escape }}">
+<meta property="og:description" content="{{ seo_description | escape }}">
+<meta property="og:url" content="{{ canonical_url | escape }}">
+<meta property="og:image" content="{{ image_url | escape }}">
+{% if page.image.type %}<meta property="og:image:type" content="{{ page.image.type | escape }}">{% endif %}
+{% if page.image.width %}<meta property="og:image:width" content="{{ page.image.width }}">{% endif %}
+{% if page.image.height %}<meta property="og:image:height" content="{{ page.image.height }}">{% endif %}
+{% if page.image.alt %}<meta property="og:image:alt" content="{{ page.image.alt | escape }}">{% endif %}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ seo_title | escape }}">
+<meta name="twitter:description" content="{{ seo_description | escape }}">
+<meta name="twitter:image" content="{{ image_url | escape }}">
+{% if page.image.alt %}<meta name="twitter:image:alt" content="{{ page.image.alt | escape }}">{% endif %}
+
+{% if og_type == 'article' %}
+<meta property="article:author" content="{{ author_url | escape }}">
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+{% if page.last_modified_at %}<meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}">{% endif %}
+{% for tag in page.tags %}<meta property="article:tag" content="{{ tag | escape }}">{% endfor %}
+{% endif %}
+
+{% capture structured_data %}
+{
+  "@context": "https://schema.org",
+  "@type": {{ schema_type | jsonify }},
+  "@id": {% if schema_type == 'WebSite' %}{{ site_id | jsonify }}{% else %}{{ canonical_url | append: '#page' | jsonify }}{% endif %},
+  "url": {{ canonical_url | jsonify }},
+  "name": {% if schema_type == 'WebSite' %}{{ site.title | jsonify }}{% else %}{{ seo_title | jsonify }}{% endif %},
+  "description": {{ seo_description | jsonify }},
+  "inLanguage": {{ site.locale | jsonify }},
+  "image": {
+    "@type": "ImageObject",
+    "url": {{ image_url | jsonify }}{% if page.image.width %},
+    "width": {{ page.image.width | jsonify }}{% endif %}{% if page.image.height %},
+    "height": {{ page.image.height | jsonify }}{% endif %}
+  }{% unless schema_type == 'WebSite' %},
+  "isPartOf": { "@type": "WebSite", "@id": {{ site_id | jsonify }}, "name": {{ site.title | jsonify }}, "url": {{ site_url | jsonify }} }{% endunless %}{% if og_type == 'article' %},
+  "headline": {{ seo_title | jsonify }},
+  "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+  "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }},
+  "author": { "@type": "Person", "name": {{ author_name | jsonify }}, "url": {{ author_url | jsonify }} },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": {{ canonical_url | jsonify }} }{% endif %}
+}
+{% endcapture %}
+<script type="application/ld+json">{{ structured_data | strip | replace: '</', '<\/' }}</script>

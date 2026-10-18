@@ -1,0 +1,57 @@
+name: Daily Perl Tip
+
+on:
+  schedule:
+    - cron: "0 3 * * *"  # every day at 3am UTC
+  workflow_dispatch:      # allow manual runs
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-perl-tip
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Perl
+        uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: '5.36'
+
+      - name: Install dependencies
+        run: |
+          cpanm --notest --installdeps .
+
+      - name: Test generation safeguards
+        run: prove -Ilib t
+
+      - name: Prepare isolated Perl example runner
+        run: |
+          docker pull perl:5.36
+          PERL_TIPS_CONTAINER_TEST=1 prove -Ilib t/sandbox.t
+
+      - name: Generate today's post
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: bin/generate_post
+
+      - name: Commit and push if there are changes
+        run: |
+          git config user.name "perl-tips-bot"
+          git config user.email "perl-tips-bot@example.com"
+          git add _posts/ data/covered-features.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Daily Perl tip for $(date -u -I)"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

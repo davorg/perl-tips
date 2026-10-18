@@ -1,0 +1,16 @@
+---
+layout: archive
+---
+{%- assign locale = page.locale | default: layout.locale | default: site.locale %}
+
+{{ content }}
+
+<h2 class="archive__subtitle">Recent tips</h2>
+
+{% assign recent_tips = site.posts | where_exp: "tip", "tip.hidden != true" | slice: 0, 5 %}
+{% assign entries_layout = page.entries_layout | default: 'list' %}
+<div class="entries-{{ entries_layout }}">
+  {% include documents-collection.html locale=locale entries=recent_tips type=entries_layout %}
+</div>
+
+<p><a href="{{ '/all-tips/' | relative_url }}">Browse all tips &rarr;</a></p>

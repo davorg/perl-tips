@@ -1,0 +1,25 @@
+---
+layout: archive
+title: "All tips"
+seo_title: "All Perl tips"
+excerpt: "Browse every Modern Perl tip, newest first."
+permalink: /all-tips/
+author_profile: false
+---
+
+<p>Every tip, newest first. Pick a feature and discover something useful.</p>
+
+{% assign tips_by_year = site.posts | group_by_exp: "tip", "tip.date | date: '%Y'" %}
+{% for year in tips_by_year %}
+  <h2>{{ year.name }}</h2>
+  <ul>
+    {% for tip in year.items %}
+      <li>
+        <a href="{{ tip.url | relative_url }}">{{ tip.title | escape }}</a>
+        &mdash; <time datetime="{{ tip.date | date_to_xmlschema }}">{{ tip.date | date: '%d %B %Y' }}</time>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>The first tips are on their way.</p>
+{% endfor %}
