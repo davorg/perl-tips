@@ -174,14 +174,34 @@ from the site build.
 | [`_data/`](_data/) | Navigation and legacy footer-link data; active footer links are configured in `_config.yml`. |
 | [`Gemfile`](Gemfile), [`Gemfile.lock`](Gemfile.lock) | Ruby dependencies; currently locks Jekyll 4.4.1 and Bundler 2.5.22 for x86_64 Linux. |
 | [`Gemfile.old`](Gemfile.old) | Previous Jekyll 3.9 manifest; not active. |
-| [`.github/workflows/daily-css.yml`](.github/workflows/daily-css.yml) | Daily generation, checks, and commit/push automation. |
+| [`.github/workflows/daily-tip.yml`](.github/workflows/daily-tip.yml) | Daily generation, checks, commit/push automation, and deployment call. |
+| [`.github/workflows/pages.yml`](.github/workflows/pages.yml) | Reusable Jekyll build and GitHub Pages deployment. |
 
-The workflow runs at 03:00 UTC or via manual dispatch. It installs Perl 5.36,
+The daily workflow runs at 03:00 UTC or via manual dispatch. It installs Perl 5.36,
 runs the offline tests and real container checks, and then generates an article
 with the `OPENAI_API_KEY` secret. A failed check prevents the commit/push step.
-Workflow concurrency and a local lock prevent overlapping generation. No site
-build or deployment step is defined in this workflow; hosting settings must be
-checked separately.
+Workflow concurrency and a local lock prevent overlapping generation.
+
+## Deployment
+
+The Pages workflow runs on pushes to `main`, via manual dispatch on `main`, or
+as a reusable workflow called after successful daily generation on `main`.
+The daily workflow passes the resulting commit SHA so the build includes the
+new article. This explicit call is needed because pushes made with
+`GITHUB_TOKEN` do not trigger another push workflow.
+
+The build uses Ruby 3.3, the locked Bundler dependencies, and
+`JEKYLL_ENV=production`, then uploads `_site/` as a Pages artifact. A separate
+job deploys that artifact to the `github-pages` environment with Pages and OIDC
+permissions. Pages runs share a concurrency group and do not cancel an active
+deployment. No additional deployment secret is required.
+
+In repository Settings → Pages, select **GitHub Actions** as the source and set
+the custom domain to `tips.perlhacks.com`. The domain's DNS CNAME should point
+to `davorg.github.io`; enable HTTPS when available. The repository's `CNAME`
+file does not configure the custom domain for an Actions deployment. These
+repository settings have been configured; DNS and the first live deployment
+still need verification.
 
 ## Findings still relevant before launch
 
@@ -189,7 +209,7 @@ The inherited CSS homepage, image references, footer repository link, and
 custom-domain file have been replaced with Modern Perl Tips branding. Navigation
 now points to Home, All tips, and perldelta. The theme's automatic footer feed
 link is the single visible feed link on each page. `CNAME` and `_config.yml`
-agree on `tips.perlhacks.com`; DNS and hosting settings still need checking
+agree on `tips.perlhacks.com`; DNS and live-site behavior still need checking
 before launch. The old CSS images remain as unused files.
 
 The original articles contain technical errors and repeated subjects; they are

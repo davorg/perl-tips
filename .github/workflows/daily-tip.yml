@@ -16,6 +16,8 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    outputs:
+      ref: ${{ steps.commit.outputs.ref }}
 
     steps:
       - name: Checkout code
@@ -44,6 +46,7 @@ jobs:
         run: bin/generate_post
 
       - name: Commit and push if there are changes
+        id: commit
         run: |
           git config user.name "perl-tips-bot"
           git config user.email "perl-tips-bot@example.com"
@@ -52,6 +55,18 @@ jobs:
             git commit -m "Daily Perl tip for $(date -u -I)"
             git push
           fi
+          echo "ref=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    needs: generate
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml
+    with:
+      ref: ${{ needs.generate.outputs.ref }}
 
