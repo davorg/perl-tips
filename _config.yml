@@ -68,7 +68,7 @@ footer:
   links:
     - label: "Made by Dave Cross"
       icon: "fa-solid fa-user"
-      url: "https://links.davecross.co.uk/"
+      url: "https://davecross.co.uk/"
     - label: "GitHub"
       icon: "fab fa-github"
       url: "https://github.com/davorg/perl-tips"
