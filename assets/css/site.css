@@ -11,3 +11,9 @@
 .page__feature + .page__meta {
   margin-top: 0;
 }
+
+.page__meta-feature {
+  font-variant-caps: all-small-caps;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}

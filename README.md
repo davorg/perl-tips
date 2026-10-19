@@ -8,12 +8,14 @@ about modern Perl. The repository is
 The message is **useful Perl features, one small tip at a time**: help existing
 Perl programmers discover additions they may have missed, encourage reading
 [perldelta](https://metacpan.org/dist/perl/view/pod/perldelta.pod) with each new
-release, and keep Perl reasonably up to date. This appears on the homepage,
-in site metadata, and in a reminder in the footer on every page.
+release, and keep Perl reasonably up to date. The homepage gives a short summary,
+with the full introduction on the About page. The message also appears in site
+metadata and in a reminder in the footer on every page.
 
 The homepage shows the five newest tips, with the complete archive on All tips.
 Both lists show a small publication date with a calendar icon beneath each title,
-using day-month-year format. Individual tips show
+followed by a middle dot and the feature name on the same line. Dates use
+day-month-year format. Individual tips show
 the reviewed feature name in small caps directly below the title. The name comes
 from `feature_name` metadata, with the internal `feature` ID retained for tracking.
 Code blocks have a compact, keyboard-accessible copy button in the top-right corner.
@@ -191,6 +193,7 @@ from the site build.
 | [`cpanfile`](cpanfile) | Perl dependencies, including JSON::Validator and IPC::Run. |
 | [`_posts/`](_posts/) | Article source with YAML front matter and fenced examples. |
 | [`_pages/index.md`](_pages/index.md) | Homepage copy using the local `home` layout. |
+| [`_pages/about.md`](_pages/about.md) | Site introduction, perldelta guidance, and upgrade encouragement. |
 | [`_pages/all-tips.html`](_pages/all-tips.html) | Complete tip index, grouped by year with newest tips first. |
 | [`_layouts/home.html`](_layouts/home.html) | Homepage layout with the five most recent tips. |
 | [`_includes/seo.html`](_includes/seo.html) | Canonical URLs, descriptions, social cards, and JSON-LD. |
@@ -231,7 +234,7 @@ repository settings and initial Pages deployment have been confirmed working.
 
 The inherited CSS homepage, image references, footer repository link, and
 custom-domain file have been replaced with Modern Perl Tips branding. Navigation
-now points to Home, All tips, and perldelta. The theme's automatic footer feed
+now points to Home, All tips, About, and perldelta. The theme's automatic footer feed
 link is the single visible feed link on each page. `CNAME` and `_config.yml`
 agree on `tips.perlhacks.com`. GitHub Pages deployment has been confirmed working.
 The old CSS images remain as unused files.
