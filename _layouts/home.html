@@ -1,16 +1,46 @@
 ---
-layout: archive
+layout: default
 ---
-{%- assign locale = page.locale | default: layout.locale | default: site.locale %}
+<div class="container">
+  <section class="home-intro" aria-labelledby="home-heading">
+    <div class="home-intro__copy">
+      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Keep your Perl moving</p>
+      <h1 id="home-heading">Your Perl has<br>a few <em>new tricks.</em></h1>
+      <div class="home-intro__description">{{ content }}</div>
+      <a class="text-link" href="{{ '/about/' | relative_url }}">A little more about us <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="code-note">
+      <div class="code-note__top"><span class="code-note__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>hello-modern-perl.pl</span><span aria-hidden="true">↗</span></div>
+      <div class="code-note__body">
+        <p class="code-note__comment"># Same Perl. A few new possibilities.</p>
+        {% highlight perl %}use v5.36;
 
-{{ content }}
+sub greet ($name = 'world') {
+    say "Hello, $name!";
+}
 
-<h2 class="archive__subtitle">Recent tips</h2>
+greet('modern Perl');{% endhighlight %}
+        <div class="code-note__output"><span aria-hidden="true">›</span> Hello, modern Perl!</div>
+      </div>
+      <a class="code-note__caption" href="{{ '/2026/10/15/signatures/' | relative_url }}"><span>Meet subroutine signatures</span><span aria-hidden="true">→</span></a>
+      <span class="code-note__annotation">A little less boilerplate.<br>A little more clarity.</span>
+    </div>
+  </section>
 
-{% assign recent_tips = site.posts | where_exp: "tip", "tip.hidden != true" | slice: 0, 5 %}
-{% assign entries_layout = page.entries_layout | default: 'list' %}
-<div class="entries-{{ entries_layout }}">
-  {% include documents-collection.html locale=locale entries=recent_tips type=entries_layout %}
+  <section class="recent-tips" aria-labelledby="recent-heading">
+    <header class="section-heading">
+      <div><p class="eyebrow">The latest discoveries</p><h2 id="recent-heading">One tip at a time.</h2></div>
+      <a class="text-link" href="{{ '/all-tips/' | relative_url }}">Explore all tips <span aria-hidden="true">↗</span></a>
+    </header>
+    {% assign recent_tips = site.posts | where_exp: "tip", "tip.hidden != true" | slice: 0, 5 %}
+    {% include tip-list.html tips=recent_tips excerpts=true %}
+    {% if recent_tips.size == 0 %}<p>The first tips are on their way.</p>{% endif %}
+    <a class="archive-link" href="{{ '/all-tips/' | relative_url }}">There’s more to discover. <strong>Browse all tips <span aria-hidden="true">→</span></strong></a>
+  </section>
+
+  <aside class="perldelta-note" aria-labelledby="perldelta-heading">
+    <span class="perldelta-note__mark" aria-hidden="true">Δ</span>
+    <div><p class="eyebrow">Make it a habit</p><h2 id="perldelta-heading">New release? Read the delta.</h2><p>A few minutes with the release notes can change the way you write Perl.</p></div>
+    <a class="text-link" href="https://metacpan.org/dist/perl/view/pod/perldelta.pod">Read perldelta <span aria-hidden="true">↗</span></a>
+  </aside>
 </div>
-
-<p><a href="{{ '/all-tips/' | relative_url }}">Browse all tips &rarr;</a></p>

@@ -12,6 +12,13 @@ release, and keep Perl reasonably up to date. The homepage gives a short summary
 with the full introduction on the About page. The message also appears in site
 metadata and in a reminder in the footer on every page.
 
+The site uses a custom Jekyll design: warm
+paper colours, deep teal code blocks, Newsreader headlines, and DM Sans body
+text. Fonts load from Google Fonts with system-font fallbacks. Layouts, navigation,
+responsive styles, and Rouge syntax colours live in this repository; the site
+no longer downloads a theme. See [the design notes](docs/design.md) for preview
+instructions and implementation details.
+
 The homepage shows the five newest tips, with the complete archive on All tips.
 Both lists show a small publication date with a calendar icon beneath each title,
 followed by a middle dot and the feature name on the same line. Dates use
@@ -174,10 +181,10 @@ bundle exec jekyll serve
 JEKYLL_ENV=production bundle exec jekyll build
 ```
 
-Jekyll downloads the Minimal Mistakes remote theme, so a fresh build requires
-network access even when gems are already installed. `_site/` is generated
-output. Development code, tests, the catalogue, and this README are excluded
-from the site build.
+Once gems are installed, the site builds without network access. Google Fonts
+loads in the browser; the site uses system fonts when it is unavailable.
+`_site/` is generated output. Development code, tests, the catalogue, and this
+README are excluded from the site build.
 
 ## Repository map
 
@@ -196,9 +203,14 @@ from the site build.
 | [`_pages/about.md`](_pages/about.md) | Site introduction, perldelta guidance, and upgrade encouragement. |
 | [`_pages/all-tips.html`](_pages/all-tips.html) | Complete tip index, grouped by year with newest tips first. |
 | [`_layouts/home.html`](_layouts/home.html) | Homepage layout with the five most recent tips. |
+| [`_layouts/default.html`](_layouts/default.html) | Shared document, fonts, SEO, analytics, header, and footer. |
+| [`_layouts/single.html`](_layouts/single.html), [`_layouts/archive.html`](_layouts/archive.html) | Reading view, About page, and archive presentation. |
+| [`_includes/tip-list.html`](_includes/tip-list.html) | Shared listings with dates and feature names. |
+| [`assets/css/site.css`](assets/css/site.css) | Custom responsive design and syntax colours. |
+| [`docs/design.md`](docs/design.md) | Design direction, preview instructions, and validation. |
 | [`_includes/seo.html`](_includes/seo.html) | Canonical URLs, descriptions, social cards, and JSON-LD. |
 | [`assets/js/code-copy.js`](assets/js/code-copy.js), [`assets/css/code-copy.css`](assets/css/code-copy.css) | Copy buttons and feedback for code blocks. |
-| [`_config.yml`](_config.yml) | Site identity, remote theme, plugins, analytics, URLs, and exclusions. |
+| [`_config.yml`](_config.yml) | Site identity, plugins, analytics, URLs, and exclusions. |
 | [`_data/`](_data/) | Navigation and legacy footer-link data; active footer links are configured in `_config.yml`. |
 | [`Gemfile`](Gemfile), [`Gemfile.lock`](Gemfile.lock) | Ruby dependencies; currently locks Jekyll 4.4.1 and Bundler 2.5.22 for x86_64 Linux. |
 | [`Gemfile.old`](Gemfile.old) | Previous Jekyll 3.9 manifest; not active. |
@@ -234,8 +246,8 @@ repository settings and initial Pages deployment have been confirmed working.
 
 The inherited CSS homepage, image references, footer repository link, and
 custom-domain file have been replaced with Modern Perl Tips branding. Navigation
-now points to Home, All tips, About, and perldelta. The theme's automatic footer feed
-link is the single visible feed link on each page. `CNAME` and `_config.yml`
+now points to Home, All tips, About, and perldelta. The custom footer has the
+single visible feed link on each page. `CNAME` and `_config.yml`
 agree on `tips.perlhacks.com`. GitHub Pages deployment has been confirmed working.
 The old CSS images remain as unused files.
 
@@ -258,8 +270,8 @@ execution and technical review for every saved tip. One draft was rejected for
 an uninitialized-value warning and repaired before saving. Local site checks
 after the reset verified seven dated tips, five homepage entries, the complete
 archive and feed, and removal of old post URLs from the generated site and sitemap.
-The local build used the installed theme because remote-theme downloads remain
-blocked in this workspace.
+That local build used the installed theme because remote-theme downloads were
+blocked in this workspace. The custom design removes this build dependency.
 
 Inline-formatting safeguards subsequently brought the offline suite to 75 tests.
 They cover rejection and repair of bare prose pipes and malformed backtick spans,

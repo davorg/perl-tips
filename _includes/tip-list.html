@@ -1,0 +1,13 @@
+<ol class="tip-list">
+  {% for post in include.tips %}
+    <li class="tip-list__item">
+      <span class="tip-list__number" aria-hidden="true">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+      <article class="tip-list__body">
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+        {% include page__meta.html document=post type="list" %}
+        {% if include.excerpts %}<p class="tip-list__excerpt">{{ post.excerpt | strip_html | normalize_whitespace | truncate: 175 | escape }}</p>{% endif %}
+      </article>
+      <span class="tip-list__arrow" aria-hidden="true">↗</span>
+    </li>
+  {% endfor %}
+</ol>

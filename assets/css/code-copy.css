@@ -17,19 +17,19 @@
   width: 1.5rem;
   height: 1.5rem;
   padding: 0;
-  border: 1px solid #426569;
+  border: 1px solid #6d8d7d;
   border-radius: 0.2rem;
-  background: #fff9ed;
-  color: #173f43;
+  background: #204744;
+  color: #e1eadb;
   cursor: pointer;
 }
 
 .code-copy-button:hover {
-  background: #d9eee4;
+  background: #365f52;
 }
 
 .code-copy-button:focus-visible {
-  outline: 3px solid #173f43;
+  outline: 3px solid #edbe68;
   outline-offset: 2px;
 }
 
@@ -40,6 +40,7 @@
 
 .code-copy-button[data-copied] {
   background: #a8ddc6;
+  color: #173f43;
 }
 
 .code-copy-status {
@@ -47,7 +48,7 @@
   top: 0.55rem;
   right: 2.2rem;
   max-width: calc(100% - 3rem);
-  color: inherit;
+  color: #e1eadb;
   font: 0.75rem/1.4 sans-serif;
 }
 
