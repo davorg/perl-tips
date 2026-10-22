@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<article class="article container{% unless page.collection == 'posts' %} article--page{% endunless %}">
+  <header class="article-header">
+    {% if page.collection == 'posts' %}<a class="back-link" href="{{ '/all-tips/' | relative_url }}"><span aria-hidden="true">←</span> Back to all tips</a>{% else %}<p class="eyebrow">A little about us</p>{% endif %}
+    <h1>{{ page.title | escape }}</h1>
+    {% include page__meta.html document=page %}
+  </header>
+  <div class="article-content">
+    {% if page.collection == 'posts' %}
+      <aside class="article-margin" aria-label="About this example">
+        <span class="eyebrow">Small example.<br>Useful idea.</span>
+        {% if page.perl_version %}<p>Example tested with<br><strong>Perl {{ page.perl_version | escape }}</strong></p>{% endif %}
+        <a href="https://metacpan.org/dist/perl/view/pod/perldelta.pod">Keep up with Perl <span aria-hidden="true">↗</span></a>
+      </aside>
+    {% endif %}
+    <div class="prose">{{ content }}</div>
+  </div>
+  {% if page.collection == 'posts' %}
+    <nav class="post-navigation" aria-label="More tips">
+      {% if page.previous %}<a href="{{ page.previous.url | relative_url }}" rel="prev"><span class="eyebrow">← Previous tip</span><span>{{ page.previous.title | escape }}</span></a>{% endif %}
+      {% if page.next %}<a href="{{ page.next.url | relative_url }}" rel="next"><span class="eyebrow">Next tip →</span><span>{{ page.next.title | escape }}</span></a>{% endif %}
+    </nav>
+  {% endif %}
+</article>

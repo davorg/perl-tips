@@ -1,0 +1,13 @@
+<header class="site-header">
+  <div class="site-header__inner container">
+    <a class="site-brand" href="{{ '/' | relative_url }}" aria-label="Modern Perl Tips home">
+      <img src="{{ site.logo | relative_url }}" alt="" width="44" height="44">
+      <span>Modern Perl <strong>Tips</strong><small>A little learning goes a long way.</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Main navigation">
+      {% for link in site.data.navigation.main %}
+        <a href="{{ link.url | relative_url }}"{% if page.url == link.url %} aria-current="page"{% endif %}>{{ link.title | escape }}{% if link.url contains '://' %}<span aria-hidden="true"> ↗</span>{% endif %}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>

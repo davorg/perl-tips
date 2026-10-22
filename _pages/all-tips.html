@@ -7,19 +7,13 @@ permalink: /all-tips/
 author_profile: false
 ---
 
-<p>Every tip, newest first. Pick a feature and discover something useful.</p>
-
-{% assign tips_by_year = site.posts | group_by_exp: "tip", "tip.date | date: '%Y'" %}
+{% assign visible_tips = site.posts | where_exp: "tip", "tip.hidden != true" %}
+{% assign tips_by_year = visible_tips | group_by_exp: "tip", "tip.date | date: '%Y'" %}
 {% for year in tips_by_year %}
-  <h2>{{ year.name }}</h2>
-  <ul>
-    {% for post in year.items %}
-      <li class="list__item">
-        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        {% include page__meta.html type="list" %}
-      </li>
-    {% endfor %}
-  </ul>
+  <section class="archive-year" aria-labelledby="year-{{ year.name }}">
+    <header class="section-heading"><h2 id="year-{{ year.name }}">{{ year.name }}</h2><span class="eyebrow">{{ year.items.size }} {% if year.items.size == 1 %}tip{% else %}tips{% endif %}</span></header>
+    {% include tip-list.html tips=year.items %}
+  </section>
 {% else %}
   <p>The first tips are on their way.</p>
 {% endfor %}

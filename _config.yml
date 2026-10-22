@@ -29,16 +29,11 @@ date_format: "%d %B %Y"
 email: hello@davecross.co.uk
 github_username:  davorg
 
-remote_theme: mmistakes/minimal-mistakes
 plugins:
-  - jekyll-include-cache
-  - jekyll-remote-theme
   - jekyll-seo-tag
   - jekyll-feed
   - jekyll-sitemap
 
-# Minimal Mistakes Settings
-minimal_mistakes_skin: "default"
 markdown: kramdown
 highlighter: rouge
 

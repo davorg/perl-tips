@@ -7,10 +7,5 @@ permalink: /
 author_profile: false
 ---
 
-**Useful Perl features, one small tip at a time.**
-
-Discover Perl features you might have missed, with practical examples and links
-to the documentation. [Read perldelta](https://metacpan.org/dist/perl/view/pod/perldelta.pod)
-with each new release, and keep your Perl reasonably up to date.
-
-[More about the site]({{ '/about/' | relative_url }}).
+Useful Perl features, one small tip at a time. Discover things you might have
+missed, find a clearer way to write everyday code, and keep your Perl moving.

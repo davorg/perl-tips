@@ -1,5 +1,15 @@
-<p class="perl-tips-reminder">
-  Perl keeps moving. Read
-  <a href="https://metacpan.org/dist/perl/view/pod/perldelta.pod">perldelta</a>
-  when a new version is released, and keep your Perl reasonably up to date.
-</p>
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__main">
+      <a class="site-brand" href="{{ '/' | relative_url }}"><img src="{{ site.logo | relative_url }}" width="40" height="40" alt=""><span>Modern Perl <strong>Tips</strong></span></a>
+      <p>Perl keeps moving. Read perldelta when a new version is released,<br>and keep your Perl reasonably up to date.</p>
+    </div>
+    <div class="site-footer__bottom">
+      <span>Useful features. Small examples. Better Perl.</span>
+      <nav aria-label="Footer navigation">
+        {% for link in site.footer.links %}<a href="{{ link.url | escape }}">{{ link.label | escape }}</a>{% endfor %}
+        <a href="{{ '/feed.xml' | relative_url }}">RSS feed <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </div>
+</footer>
